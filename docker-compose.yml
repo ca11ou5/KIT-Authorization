@@ -1,0 +1,27 @@
+
+
+services:
+  authorization:
+    image: authorization:latest
+    container_name: as-backend
+    depends_on:
+      - postgresql
+    networks:
+      - ps
+
+  postgresql:
+    image: postgres:14-alpine
+    container_name: as-psql
+    environment:
+      - POSTGRES_DB=authorization
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    networks:
+      - ps
+
+
+networks:
+  ps:
+

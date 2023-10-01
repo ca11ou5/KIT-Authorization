@@ -13,13 +13,14 @@ type Handler struct {
 }
 
 func InitDB(host, user, password, dbname, port, sslmode string) Handler {
+
 	dsn := fmt.Sprintf("host=%v user=%v password=%v dbname=%v port=%v sslmode=%v", host, user, password, dbname, port, sslmode)
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
-		log.Fatal("failed to connect database")
+		log.Fatal("failed to connect database", err.Error())
 	}
 
-	err = db.AutoMigrate(&entity.User{})
+	err = db.AutoMigrate(&entity.User{}, &entity.Message{})
 	if err != nil {
 		log.Fatal("failed to migrate database")
 	}

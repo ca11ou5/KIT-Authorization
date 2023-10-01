@@ -11,4 +11,5 @@ type User struct {
 	DateOfBirth string
 	CreatedAt   time.Time `gorm:"autoCreateTime"`
 	URL         string    `gorm:"default:''"`
+	Messages    []Message
 }

@@ -11,7 +11,10 @@ type Server struct {
 }
 
 func (s *Server) SignUp(ctx context.Context, request *pb.SignUpRequest) (*pb.SignUpResponse, error) {
-	return &pb.SignUpResponse{}, nil
+	return &pb.SignUpResponse{
+		Status: 0,
+		Error:  "sadsad",
+	}, nil
 }
 
 func (s *Server) SignIn(ctx context.Context, request *pb.SignInRequest) (*pb.SignInResponse, error) {

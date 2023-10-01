@@ -8,9 +8,12 @@ import (
 	"google.golang.org/grpc"
 	"log"
 	"net"
+	"time"
 )
 
 func main() {
+	time.Sleep(time.Second * 5)
+
 	cfg := configs.InitConfig()
 	h := postgres.InitDB(cfg.DBHost, cfg.DBUser, cfg.DBPassword, cfg.DBName, cfg.DBPort, cfg.DBSSLMode)
 
